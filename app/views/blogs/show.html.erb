@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
+  <div class="left">
   <%= link_to 'Back', blogs_path, class: 'btn btn-primary my-4' %>
   <div class="card" style="width: 18rem;">
   <%= image_tag @blog.image, class: 'img-responsive', height: '300px' %>
   <div class="card-body">
     <h5 class="card-title"><%= @blog.title %></h5>
     <p class="card-text"><%= @blog.body %></p>
+    <%= link_to 'Comments', new_comment_path %>
+
   </div>
     <% if user_signed_in? && @blog.user_id == current_user.id %>
       <div class="card-footer">
@@ -14,5 +17,37 @@
         <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     <% end %>
+</div>
+</div>
+<div class="right">
+  <h1>Comments</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Blog</th>
+        <th>Body</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @blog.comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.first_name%></td>
+          <td><%= comment.blog.title %></td>
+          <td><%= comment.body %></td>
+            <td><%= link_to 'Show', comment %></td>
+            <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+            <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Comment', new_comment_path %>
 </div>
 </div>

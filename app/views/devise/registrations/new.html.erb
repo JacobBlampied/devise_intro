@@ -1,27 +1,23 @@
 <div class="container">
 <h2>Sign up</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :first_name %>
+    <%= f.label :first_name %><br />
     <%= f.text_field :first_name, class: 'form-control' %>
   </div>
-
   <div class="form-group">
-    <%= f.label :last_name %>
+    <%= f.label :last_name %><br />
     <%= f.text_field :last_name, class: 'form-control' %>
   </div>
-
   <div class="form-group">
-    <%= f.label :job %>
+    <%= f.label :job %><br />
     <%= f.text_field :job, class: 'form-control' %>
   </div>
-
   <div class="form-group">
-    <%= f.label :age %>
-    <%= f.number_field :age, class: 'form-control', min: 18 %>
+    <%= f.label :age %><br />
+    <%= f.number_field :age,autofocus: true, class: 'form-control', min: 18 %>
   </div>
 
   <div class="form-group">
@@ -34,12 +30,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control'  %>
   </div>
 
   <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'  %>
   </div>
 
   <div class="actions">
@@ -48,5 +44,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-
 </div>
+ 
