@@ -11,7 +11,7 @@
 
   </div>
   <div class="card-foot">
-    <% if @blog.user_id == current_user.id %>
+    <% if user_signed_in? && @blog.user_id == current_user.id %>
     <%= link_to 'Edit', edit_blog_path(@blog) %> |
     <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
